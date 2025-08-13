@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type Person interface {
 	getName() string
 }
@@ -11,9 +9,9 @@ type Student struct {
 	age  int
 }
 
-func (stu *Student) getName() string {
-	return stu.name
-}
+// func (stu *Student) getName() string {
+// 	return stu.name
+// }
 
 type Worker struct {
 	name   string
@@ -30,5 +28,8 @@ func main() {
 		age:  18,
 	}
 
-	fmt.Println(p.getName()) // Tom
+	var _ Person = (*Student)(nil)
+	var _ Person = (*Worker)(nil)
+
+	// fmt.Println(p.getName()) // Tom
 }
